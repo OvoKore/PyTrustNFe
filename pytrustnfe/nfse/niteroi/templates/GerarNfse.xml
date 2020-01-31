@@ -1,15 +1,11 @@
-<EnviarLoteRpsSincronoEnvio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-    xmlns="http://www.abrasf.org.br/nfse.xsd">
-    <LoteRps Id="idArquivo" versao="2.03">
-        <NumeroLote>...</NumeroLote>
-        <CpfCnpj>
-            <Cnpj>...</Cnpj>
-        </CpfCnpj>
-        <InscricaoMunicipal>...</InscricaoMunicipal>
-        <QuantidadeRps>...</QuantidadeRps>
-        <ListaRps>
-            {% include 'rps.xml' %}
+<GerarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+    <LoteRps Id="lote{{ rps.numero_lote }}" versao="1.00">
+        <NumeroLote>{{ rps.numero_lote }}</NumeroLote>
+        <Cnpj>{{ rps.prestador.cnpj }}</Cnpj>
+        <InscricaoMunicipal>{{ rps.prestador.inscricao_municipal }}</InscricaoMunicipal>
+        <QuantidadeRps>1</QuantidadeRps>
+        <ListaRps xmlns="http://www.abrasf.org.br/nfse.xsd">
+            {% include 'Rps.xml' %}
         </ListaRps>
     </LoteRps>
-</EnviarLoteRpsSincronoEnvio>
+</GerarNfseEnvio>
