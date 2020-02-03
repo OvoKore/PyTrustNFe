@@ -1,11 +1,7 @@
-<GerarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
-    <LoteRps Id="lote{{ rps.numero_lote }}" versao="1.00">
-        <NumeroLote>{{ rps.numero_lote }}</NumeroLote>
-        <Cnpj>{{ rps.prestador.cnpj }}</Cnpj>
-        <InscricaoMunicipal>{{ rps.prestador.inscricao_municipal }}</InscricaoMunicipal>
-        <QuantidadeRps>1</QuantidadeRps>
-        <ListaRps xmlns="http://www.abrasf.org.br/nfse.xsd">
-            {% include 'Rps.xml' %}
-        </ListaRps>
-    </LoteRps>
+<?xml version="1.0" encoding="UTF-8" ?>
+<GerarNfseEnvio 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns="http://www.abrasf.org.br/nfse.xsd">
+        {% include 'Rps.xml' %}
 </GerarNfseEnvio>
