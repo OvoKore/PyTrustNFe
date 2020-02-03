@@ -12,10 +12,9 @@
                 </cabecalho> ]]>
             </nfseCabecMsg>
             <nfseDadosMsg>
-                 <![CDATA[<?xml version='1.0' encoding='utf-8'?>
                 <GerarNfseEnvio xmlns="http://192.168.1.156:8752">
                     {% include 'Rps.xml' %}
-                </GerarNfseEnvio> ]]>
+                </GerarNfseEnvio>
             </nfseDadosMsg>
         </ns2:GerarNfseRequest>
     </S:Body>
