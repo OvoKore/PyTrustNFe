@@ -1,3 +1,4 @@
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <xsd:schema targetNamespace="http://www.nfe.com.br/WSNacional/XSD/1/nfse_municipal_v01.xsd"
             xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd"
@@ -29,3 +30,4 @@
   </xsd:element>
   
 </xsd:schema>
+```
