@@ -1,20 +1,21 @@
-<soap:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
-    <soap:Body>
-        <GerarNfseRequest xmlns:ns2="http://nfse.abrasf.org.br">
+<S:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+    <S:Body>
+        <GerarNfseRequest xmlns="http://192.168.1.156:8752">
             <nfseCabecMsg>
                 <cabecalho versao="2.03" 
                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
                     xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-                    xmlns="http://www.abrasf.org.br/nfse.xsd"
-                    versao="2.03">
+                    xmlns="http://192.168.1.156:8752" versao="2.03">
                     <versaoDados>2.03</versaoDados>
                 </cabecalho>
             </nfseCabecMsg>
             <nfseDadosMsg>
-                <GerarNfseEnvio xmlns="192.168.1.156:8752">
+                <GerarNfseEnvio xmlns="http://192.168.1.156:8752">
                     {% include 'Rps.xml' %}
                 </GerarNfseEnvio>
             </nfseDadosMsg>
         </GerarNfseRequest>
-    </soap:Body>
-</soap:Envelope>
+    </S:Body>
+</S:Envelope>
