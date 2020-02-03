@@ -1,10 +1,10 @@
-<soap:Envelope xmlnsoap:S="http://schemas.xmlsoap.org/soap/envelope/">
+<soap:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
     <soap:Body>
-        <GerarNfseRequest xmlnsoap:ns2="http://nfse.abrasf.org.br">
+        <GerarNfseRequest xmlns:ns2="http://nfse.abrasf.org.br">
             <nfseCabecMsg>
                 <cabecalho versao="2.03" 
-                    xmlnsoap:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-                    xmlnsoap:xsd="http://www.w3.org/2001/XMLSchema" 
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
                     xmlns="http://www.abrasf.org.br/nfse.xsd"
                     versao="2.03">
                     <versaoDados>2.03</versaoDados>
