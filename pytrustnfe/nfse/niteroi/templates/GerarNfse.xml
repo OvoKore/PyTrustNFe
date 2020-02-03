@@ -2,17 +2,20 @@
     <S:Body>
         <ns2:GerarNfseRequest xmlns:ns2="http://nfse.abrasf.org.br">
             <nfseCabecMsg>
-                <ns2:cabecalho versao="2.03" 
+                <![CDATA[<?xml version='1.0' encoding='utf-8'?>
+                <cabecalho versao="2.03" 
                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
                     xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-                    xmlns="http://www.abrasf.org.br/nfse.xsd">
+                    xmlns="http://www.abrasf.org.br/nfse.xsd"
+                    versao="2.03">
                     <versaoDados>2.03</versaoDados>
-                </ns2:cabecalho>
+                </cabecalho> ]]>
             </nfseCabecMsg>
             <nfseDadosMsg>
+                 <![CDATA[<?xml version='1.0' encoding='utf-8'?>
                 <GerarNfseEnvio xmlns="http://192.168.1.156:8752">
                     {% include 'Rps.xml' %}
-                </GerarNfseEnvio>
+                </GerarNfseEnvio> ]]>
             </nfseDadosMsg>
         </ns2:GerarNfseRequest>
     </S:Body>
