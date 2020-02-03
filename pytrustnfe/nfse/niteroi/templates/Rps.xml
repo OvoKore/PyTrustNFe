@@ -55,7 +55,7 @@
         <Prestador>
             <CpfCnpj>
                 <Cnpj>{{ rps.prestador.cnpj }}</Cnpj>
-            <CpfCnpj>
+            </CpfCnpj>
             <InscricaoMunicipal>{{ rps.prestador.inscricao_municipal }}</InscricaoMunicipal>
         </Prestador>
 
