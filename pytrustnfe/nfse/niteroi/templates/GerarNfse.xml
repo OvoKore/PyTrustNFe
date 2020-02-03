@@ -2,7 +2,6 @@
     <S:Body>
         <ns2:GerarNfseRequest xmlns:ns2="http://nfse.abrasf.org.br">
             <nfseCabecMsg>
-                <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
                 <ns2:cabecalho versao="2.03" 
                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
                     xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
@@ -11,7 +10,6 @@
                 </ns2:cabecalho>
             </nfseCabecMsg>
             <nfseDadosMsg>
-                <?xml version="1.0" encoding="UTF-8"?>
                 <GerarNfseEnvio xmlns="http://192.168.1.156:8752">
                     {% include 'Rps.xml' %}
                 </GerarNfseEnvio>
