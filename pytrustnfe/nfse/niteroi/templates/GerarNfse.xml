@@ -1,13 +1,15 @@
 <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
     <S:Body>
-        <GerarNfseRequest xmlns="http://192.168.1.156:8752">
+        <GerarNfseRequest xmlns="http://www.abrasf.org.br/nfse.xsd">
             <nfseCabecMsg>
-                <cabecalho xmlns="http://192.168.1.156:8752" versao="2.03">
+                <cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.03">
                     <versaoDados>2.03</versaoDados>
                 </cabecalho>
             </nfseCabecMsg>
             <nfseDadosMsg>
-                <GerarNfseEnvio xmlns="http://192.168.1.156:8752">
+                <GerarNfseEnvio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+                    xmlns="http://www.abrasf.org.br/nfse.xsd">
                     {% include 'Rps.xml' %}
                 </GerarNfseEnvio>
             </nfseDadosMsg>
