@@ -1,22 +1,31 @@
 <Rps>
-    <InfRps xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd" Id="r{{ rps.numero }}">
-        <IdentificacaoRps>
-            <Numero>{{ rps.numero }}</Numero>
-            <Serie>{{ rps.serie }}</Serie>
-            <Tipo>{{ rps.tipo_rps }}</Tipo>
-        </IdentificacaoRps>
-        <DataEmissao>{{ rps.data_emissao }}</DataEmissao>
+    <InfDeclaracaoPrestacaoServico xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd" Id="r{{ rps.numero }}">
+        <Rps>
+            <IdentificacaoRps>
+                <Numero>{{ rps.numero }}</Numero>
+                <Serie>{{ rps.serie }}</Serie>
+                <Tipo>{{ rps.tipo_rps }}</Tipo>
+            </IdentificacaoRps>
+            <DataEmissao>{{ rps.data_emissao }}</DataEmissao>
+            <Status>{{ rps.status }}</Status>
+        </Rps>
+
+        <!-- <Competencia>???</Competencia> -->
+        <!-- <IncentivoFiscal>???</IncentivoFiscal> -->
+
         <NaturezaOperacao>{{ rps.natureza_operacao }}</NaturezaOperacao>
         <RegimeEspecialTributacao>{{ rps.regime_tributacao }}</RegimeEspecialTributacao>
         <OptanteSimplesNacional>{{ rps.optante_simples }}</OptanteSimplesNacional>
         <IncentivadorCultural>{{ rps.incentivador_cultural }}</IncentivadorCultural>
-        <Status>{{ rps.status }}</Status>
+        
         <RpsSubstituido>
             <Numero>{{ rps.numero_substituido }}</Numero>
             <Serie>{{ rps.serie_substituido }}</Serie>
             <Tipo>{{ rps.tipo_substituido }}</Tipo>
         </RpsSubstituido>
+
         <Servico>
+
             <Valores>
                 <ValorServicos>{{ rps.valor_servico }}</ValorServicos>
                 <ValorDeducoes>{{ rps.valor_deducao }}</ValorDeducoes>
@@ -25,7 +34,6 @@
                 <ValorInss>{{ rps.valor_inss }}</ValorInss>
                 <ValorIr>{{ rps.valor_ir }}</ValorIr>
                 <ValorCsll>{{ rps.valor_csll }}</ValorCsll>
-                <IssRetido>{{ rps.iss_retido }}</IssRetido>
                 <ValorIss>{{ rps.valor_iss }}</ValorIss>
                 <ValorIssRetido>{{ rps.valor_iss_retido }}</ValorIssRetido>
                 <OutrasRetencoes>{{ rps.outras_retencoes }}</OutrasRetencoes>
@@ -35,16 +43,22 @@
                 <DescontoIncondicionado>{{ rps.desconto_incondicionado }}</DescontoIncondicionado>
                 <DescontoCondicionado>{{ rps.desconto_condicionado }}</DescontoCondicionado>
             </Valores>
+
+            <IssRetido>{{ rps.iss_retido }}</IssRetido>
             <ItemListaServico>{{ rps.codigo_servico }}</ItemListaServico>
             <CodigoCnae>{{ rps.cnae_servico }}</CodigoCnae>
             <CodigoTributacaoMunicipio>{{ rps.codigo_tributacao_municipio }}</CodigoTributacaoMunicipio>
             <Discriminacao>{{ rps.descricao }}</Discriminacao>
             <CodigoMunicipio>{{ rps.codigo_municipio }}</CodigoMunicipio>
         </Servico>
+
         <Prestador>
-            <Cnpj>{{ rps.prestador.cnpj }}</Cnpj>
+            <CpfCnpj>
+                <Cnpj>{{ rps.prestador.cnpj }}</Cnpj>
+            <CpfCnpj>
             <InscricaoMunicipal>{{ rps.prestador.inscricao_municipal }}</InscricaoMunicipal>
         </Prestador>
+
         <Tomador>
             <IdentificacaoTomador>
                 <CpfCnpj>
@@ -72,6 +86,7 @@
                 <Email>{{ rps.tomador.email }}</Email>
             </Contato>
         </Tomador>
+
         {% if rps.intermediario is defined -%}
         <IntermediarioServico>
             <RazaoSocial>{{ rps.intermediario.razao_social }}</RazaoSocial>
@@ -87,5 +102,5 @@
             <Art>{{ rps.construcao_civil.art }}</Art>
         </ContrucaoCivil>
         {% endif %}
-    </InfRps>
+    </InfDeclaracaoPrestacaoServico>
 </Rps>
