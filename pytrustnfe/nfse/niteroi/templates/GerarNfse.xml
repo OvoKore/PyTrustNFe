@@ -1,13 +1,8 @@
-<S:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-    xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
     <S:Body>
         <GerarNfseRequest xmlns="http://192.168.1.156:8752">
             <nfseCabecMsg>
-                <cabecalho versao="2.03" 
-                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-                    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-                    xmlns="http://192.168.1.156:8752" versao="2.03">
+                <cabecalho xmlns="http://192.168.1.156:8752" versao="2.03">
                     <versaoDados>2.03</versaoDados>
                 </cabecalho>
             </nfseCabecMsg>
