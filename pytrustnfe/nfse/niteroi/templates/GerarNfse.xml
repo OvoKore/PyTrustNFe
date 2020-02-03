@@ -1,5 +1,5 @@
-<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
-    <S:Body>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
         <GerarNfseRequest xmlns="http://www.abrasf.org.br/nfse.xsd">
             <nfseCabecMsg>
                 <cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.03">
@@ -14,5 +14,5 @@
                 </GerarNfseEnvio>
             </nfseDadosMsg>
         </GerarNfseRequest>
-    </S:Body>
-</S:Envelope>
+    </soap:Body>
+</soap:Envelope>
