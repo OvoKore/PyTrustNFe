@@ -3,9 +3,12 @@ from pytrustnfe.xml import sanitize_response
 
 
 def nfeInutilizacaoCE(session, xml_send, ambiente):
+#     soap = '<Envelope xmlns="http://www.w3.org/2003/05/soap-envelope"><Body>\
+# <nfeDadosMsg xmlns="http://www.portalfiscal.inf.br/nfe/wsdl/NFeInutilizacao4"\
+# >' + xml_send + '</nfeDadosMsg></Body></Envelope>']
     soap = '<Envelope xmlns="http://www.w3.org/2003/05/soap-envelope"><Body>\
-<nfeDadosMsg xmlns="http://www.portalfiscal.inf.br/nfe/wsdl/NFeInutilizacao4"\
->' + xml_send + '</nfeDadosMsg></Body></Envelope>'
+    <nfseDadosMsg xmlns="http://www.portalfiscal.inf.br/nfe/wsdl/NFeInutilizacao4"\
+    >' + xml_send + '</nfseDadosMsg></Body></Envelope>'
     headers = {
         'SOAPAction': "",
         'Content-Type': 'application/soap+xml; charset="utf-8"'

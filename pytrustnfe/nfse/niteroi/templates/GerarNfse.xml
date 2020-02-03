@@ -1,22 +1,3 @@
-<?xml version="1.0" ?>
-<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
-    <S:Body>
-        <ns2:GerarNfseRequest xmlns:ns2="http://nfse.abrasf.org.br">
-            <nfseCabecMsg>
-                <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-                <ns2:cabecalho versao="2.03" 
-                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-                    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-                    xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.03">
-                    <versaoDados>2.03</versaoDados>
-                </ns2:cabecalho>
-            </nfseCabecMsg>
-            <nfseDadosMsg>
-                <?xml version="1.0" encoding="UTF-8"?>
-                <GerarNfseEnvio xmlns="https://raw.githubusercontent.com/OvoKore/PyTrustNFe/master3/nfse_municipal_v01.xsd">
-                    {% include 'Rps.xml' %}
-                </GerarNfseEnvio>
-            </nfseDadosMsg>
-        </ns2:GerarNfseRequest>
-    </S:Body>
-</S:Envelope>
+<GerarNfseEnvio xmlns="https://raw.githubusercontent.com/OvoKore/PyTrustNFe/master3/nfse_municipal_v01.xsd">
+    {% include 'Rps.xml' %}
+</GerarNfseEnvio>

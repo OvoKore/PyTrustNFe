@@ -246,7 +246,8 @@ def _send_v310(certificado, **kwargs):
     transport = Transport(session=session)
 
     xml = etree.fromstring(xml_send)
-    xml_um = etree.fromstring('<nfeCabecMsg xmlns="http://www.portalfiscal.inf.br/nfe/wsdl/"><cUF>AN</cUF><versaoDados>1.00</versaoDados></nfeCabecMsg>')
+    xml_um = etree.fromstring('<nfseCabecMsg xmlns="http://www.portalfiscal.inf.br/nfe/wsdl/"><cUF>AN</cUF><versaoDados>1.00</versaoDados></nfseCabecMsg>')
+    # xml_um = etree.fromstring('<nfeCabecMsg xmlns="http://www.portalfiscal.inf.br/nfe/wsdl/"><cUF>AN</cUF><versaoDados>1.00</versaoDados></nfeCabecMsg>')
     client = Client(base_url, transport=transport)
 
     port = next(iter(client.wsdl.port_types))
