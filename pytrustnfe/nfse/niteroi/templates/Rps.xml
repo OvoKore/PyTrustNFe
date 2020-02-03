@@ -10,35 +10,12 @@
             <Status>{{ rps.status }}</Status>
         </Rps>
 
-        <NaturezaOperacao>{{ rps.natureza_operacao }}</NaturezaOperacao>
-        <RegimeEspecialTributacao>{{ rps.regime_tributacao }}</RegimeEspecialTributacao>
-        <OptanteSimplesNacional>{{ rps.optante_simples }}</OptanteSimplesNacional>
-        <IncentivadorCultural>{{ rps.incentivador_cultural }}</IncentivadorCultural>
-        
-        <RpsSubstituido>
-            <Numero>{{ rps.numero_substituido }}</Numero>
-            <Serie>{{ rps.serie_substituido }}</Serie>
-            <Tipo>{{ rps.tipo_substituido }}</Tipo>
-        </RpsSubstituido>
+        <Competencia>{{ rps.data_emissao }}</Competencia>
 
         <Servico>
 
             <Valores>
                 <ValorServicos>{{ rps.valor_servico }}</ValorServicos>
-                <ValorDeducoes>{{ rps.valor_deducao }}</ValorDeducoes>
-                <ValorPis>{{ rps.valor_pis }}</ValorPis>
-                <ValorCofins>{{ rps.valor_cofins }}</ValorCofins>
-                <ValorInss>{{ rps.valor_inss }}</ValorInss>
-                <ValorIr>{{ rps.valor_ir }}</ValorIr>
-                <ValorCsll>{{ rps.valor_csll }}</ValorCsll>
-                <ValorIss>{{ rps.valor_iss }}</ValorIss>
-                <ValorIssRetido>{{ rps.valor_iss_retido }}</ValorIssRetido>
-                <OutrasRetencoes>{{ rps.outras_retencoes }}</OutrasRetencoes>
-                <BaseCalculo>{{ rps.base_calculo }}</BaseCalculo>
-                <Aliquota>{{ rps.aliquota_issqn }}</Aliquota>
-                <ValorLiquidoNfse>{{ rps.valor_liquido_nfse }}</ValorLiquidoNfse>
-                <DescontoIncondicionado>{{ rps.desconto_incondicionado }}</DescontoIncondicionado>
-                <DescontoCondicionado>{{ rps.desconto_condicionado }}</DescontoCondicionado>
             </Valores>
 
             <IssRetido>{{ rps.iss_retido }}</IssRetido>
@@ -47,6 +24,8 @@
             <CodigoTributacaoMunicipio>{{ rps.codigo_tributacao_municipio }}</CodigoTributacaoMunicipio>
             <Discriminacao>{{ rps.descricao }}</Discriminacao>
             <CodigoMunicipio>{{ rps.codigo_municipio }}</CodigoMunicipio>
+            <ExigibilidadeISS>1</ExigibilidadeISS>
+            <MunicipioIncidencia>{{ rps.codigo_municipio }}</MunicipioIncidencia>
         </Servico>
 
         <Prestador>
@@ -83,6 +62,9 @@
                 <Email>{{ rps.tomador.email }}</Email>
             </Contato>
         </Tomador>
+
+        <OptanteSimplesNacional>2</OptanteSimplesNacional>
+		<IncentivoFiscal>1</IncentivoFiscal>
 
         {% if rps.intermediario is defined -%}
         <IntermediarioServico>
