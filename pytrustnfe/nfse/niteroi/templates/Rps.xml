@@ -37,6 +37,7 @@
             <CodigoMunicipio>{{ rps.codigo_municipio }}</CodigoMunicipio>
             <ExigibilidadeISS>1</ExigibilidadeISS>
             <MunicipioIncidencia>{{ rps.codigo_municipio }}</MunicipioIncidencia>
+            <RegimeEspecialTributacao>{{ rps.regime_tributacao }}</RegimeEspecialTributacao>
         </Servico>
         <Prestador>
             <CpfCnpj>
