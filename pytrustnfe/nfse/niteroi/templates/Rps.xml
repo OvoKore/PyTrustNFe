@@ -26,7 +26,7 @@
                 <ValorCsll>{{ rps.valor_csll }}</ValorCsll>
                 <ValorIss>{{ rps.valor_iss }}</ValorIss>
                 <OutrasRetencoes>{{ rps.outras_retencoes }}</OutrasRetencoes>
-                <Aliquota>2</Aliquota>
+                <Aliquota>{{ rps.aliquota_issqn }}</Aliquota>
                 <DescontoIncondicionado>{{ rps.desconto_incondicionado }}</DescontoIncondicionado>
                 <DescontoCondicionado>{{ rps.desconto_condicionado }}</DescontoCondicionado>
             </Valores>
