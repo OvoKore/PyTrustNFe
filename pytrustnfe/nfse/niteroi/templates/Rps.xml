@@ -9,10 +9,7 @@
             <DataEmissao>{{ rps.data_emissao }}</DataEmissao>
             <Status>{{ rps.status }}</Status>
         </Rps>
-        
-        <OptanteSimplesNacional>{{ rps.optante_simples }}</OptanteSimplesNacional>
-        <IncentivadorCultural>{{ rps.incentivador_cultural }}</IncentivadorCultural>
-        
+        <Competencia>{{ rps.data_emissao }}</Competencia>
         <RpsSubstituido>
             <Numero>{{ rps.numero_substituido }}</Numero>
             <Serie>{{ rps.serie_substituido }}</Serie>
@@ -74,6 +71,8 @@
                 <Email>{{ rps.tomador.email }}</Email>
             </Contato>
         </Tomador>
+        <OptanteSimplesNacional>{{ rps.optante_simples }}</OptanteSimplesNacional>
+        <IncentivadorCultural>{{ rps.incentivador_cultural }}</IncentivadorCultural>
         {% if rps.intermediario is defined -%}
         <IntermediarioServico>
             <RazaoSocial>{{ rps.intermediario.razao_social }}</RazaoSocial>
