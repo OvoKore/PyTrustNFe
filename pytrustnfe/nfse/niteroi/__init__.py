@@ -78,32 +78,32 @@ def _send(certificado, method, **kwargs):
 
     response, obj = sanitize_response(response)
 
-    conn1.request("POST", "/1/messages.json",
-    urllib.parse.urlencode({
-        "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
-        "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
-        "title": "sent_xml",
-        "message": str(xml_send),
-    }), { "Content-type": "application/x-www-form-urlencoded" })
-    conn1.getresponse()
+    # conn1.request("POST", "/1/messages.json",
+    # urllib.parse.urlencode({
+    #     "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
+    #     "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
+    #     "title": "sent_xml",
+    #     "message": str(xml_send),
+    # }), { "Content-type": "application/x-www-form-urlencoded" })
+    # conn1.getresponse()
 
-    conn2.request("POST", "/1/messages.json",
-    urllib.parse.urlencode({
-        "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
-        "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
-        "title": "received_xml",
-        "message": str(response),
-    }), { "Content-type": "application/x-www-form-urlencoded" })
-    conn2.getresponse()
+    # conn2.request("POST", "/1/messages.json",
+    # urllib.parse.urlencode({
+    #     "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
+    #     "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
+    #     "title": "received_xml",
+    #     "message": str(response),
+    # }), { "Content-type": "application/x-www-form-urlencoded" })
+    # conn2.getresponse()
 
-    conn3.request("POST", "/1/messages.json",
-        urllib.parse.urlencode({
-            "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
-            "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
-            "title": "object",
-            "message": str(obj[0]),
-        }), { "Content-type": "application/x-www-form-urlencoded" })
-    conn3.getresponse()
+    # conn3.request("POST", "/1/messages.json",
+    #     urllib.parse.urlencode({
+    #         "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
+    #         "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
+    #         "title": "object",
+    #         "message": str(obj[0]),
+    #     }), { "Content-type": "application/x-www-form-urlencoded" })
+    # conn3.getresponse()
 
     return {
         'sent_xml': str(xml_send),
