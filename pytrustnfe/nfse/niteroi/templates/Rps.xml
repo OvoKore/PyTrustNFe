@@ -8,13 +8,13 @@
             </IdentificacaoRps>
             <DataEmissao>{{ rps.data_emissao }}</DataEmissao>
             <Status>{{ rps.status }}</Status>
+            <RpsSubstituido>
+                <Numero>{{ rps.numero_substituido }}</Numero>
+                <Serie>{{ rps.serie_substituido }}</Serie>
+                <Tipo>{{ rps.tipo_substituido }}</Tipo>
+            </RpsSubstituido>
         </Rps>
         <Competencia>{{ rps.data_emissao }}</Competencia>
-        <RpsSubstituido>
-            <Numero>{{ rps.numero_substituido }}</Numero>
-            <Serie>{{ rps.serie_substituido }}</Serie>
-            <Tipo>{{ rps.tipo_substituido }}</Tipo>
-        </RpsSubstituido>
         <Servico>
             <Valores>
                 <ValorServicos>{{ rps.valor_servico }}</ValorServicos>
@@ -44,7 +44,7 @@
             </CpfCnpj>
             <InscricaoMunicipal>{{ rps.prestador.inscricao_municipal }}</InscricaoMunicipal>
         </Prestador>
-        <Tomador>
+        <TomadorServico>
             <IdentificacaoTomador>
                 <CpfCnpj>
                     {% if rps.tomador.cnpj_cpf|length == 14  %}
@@ -70,7 +70,7 @@
                 <Telefone>{{ rps.tomador.telefone }}</Telefone>
                 <Email>{{ rps.tomador.email }}</Email>
             </Contato>
-        </Tomador>
+        </TomadorServico>
         <RegimeEspecialTributacao>{{ rps.regime_tributacao }}</RegimeEspecialTributacao>
         <OptanteSimplesNacional>{{ rps.optante_simples }}</OptanteSimplesNacional>
         <IncentivoFiscal>2</IncentivoFiscal>
