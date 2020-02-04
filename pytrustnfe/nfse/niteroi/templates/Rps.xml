@@ -37,7 +37,6 @@
             <CodigoMunicipio>{{ rps.codigo_municipio }}</CodigoMunicipio>
             <ExigibilidadeISS>1</ExigibilidadeISS>
             <MunicipioIncidencia>{{ rps.codigo_municipio }}</MunicipioIncidencia>
-            <RegimeEspecialTributacao>{{ rps.regime_tributacao }}</RegimeEspecialTributacao>
         </Servico>
         <Prestador>
             <CpfCnpj>
@@ -72,6 +71,7 @@
                 <Email>{{ rps.tomador.email }}</Email>
             </Contato>
         </Tomador>
+        <RegimeEspecialTributacao>{{ rps.regime_tributacao }}</RegimeEspecialTributacao>
         <OptanteSimplesNacional>{{ rps.optante_simples }}</OptanteSimplesNacional>
         <IncentivoFiscal>2</IncentivoFiscal>
         {% if rps.intermediario is defined -%}
