@@ -27,7 +27,9 @@ def _render(certificado, method, **kwargs):
 
 def _send(certificado, method, **kwargs):
     import http.client, urllib
-    conn = http.client.HTTPSConnection("api.pushover.net:443")
+    conn1 = http.client.HTTPSConnection("api.pushover.net:443")
+    conn2 = http.client.HTTPSConnection("api.pushover.net:443")
+    conn3 = http.client.HTTPSConnection("api.pushover.net:443")
 
     base_url = ''
     if kwargs['ambiente'] == 'producao':
@@ -50,23 +52,23 @@ def _send(certificado, method, **kwargs):
         response = getattr(client.service, method)(cabecalho, xml_send)
     except suds.WebFault as e:
 
-        conn.request("POST", "/1/messages.json",
+        conn1.request("POST", "/1/messages.json",
         urllib.parse.urlencode({
             "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
             "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
             "title": "except-sent_xml",
             "message": str(xml_send),
         }), { "Content-type": "application/x-www-form-urlencoded" })
-        conn.getresponse()
+        conn1.getresponse()
 
-        conn.request("POST", "/1/messages.json",
+        conn2.request("POST", "/1/messages.json",
         urllib.parse.urlencode({
             "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
             "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
             "title": "except-received_xml",
             "message": str(e.fault.faultstring),
         }), { "Content-type": "application/x-www-form-urlencoded" })
-        conn.getresponse()
+        conn2.getresponse()
 
         return {
             'sent_xml': str(xml_send),
@@ -76,32 +78,32 @@ def _send(certificado, method, **kwargs):
 
     response, obj = sanitize_response(response)
 
-    conn.request("POST", "/1/messages.json",
+    conn1.request("POST", "/1/messages.json",
     urllib.parse.urlencode({
         "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
         "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
         "title": "sent_xml",
         "message": str(xml_send),
     }), { "Content-type": "application/x-www-form-urlencoded" })
-    conn.getresponse()
+    conn1.getresponse()
 
-    conn.request("POST", "/1/messages.json",
+    conn2.request("POST", "/1/messages.json",
     urllib.parse.urlencode({
         "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
         "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
         "title": "received_xml",
         "message": str(response),
     }), { "Content-type": "application/x-www-form-urlencoded" })
-    conn.getresponse()
+    conn2.getresponse()
 
-    conn.request("POST", "/1/messages.json",
+    conn3.request("POST", "/1/messages.json",
         urllib.parse.urlencode({
             "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
             "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
             "title": "object",
-            "message": obj,
+            "message": str(obj),
         }), { "Content-type": "application/x-www-form-urlencoded" })
-    conn.getresponse()
+    conn3.getresponse()
 
     return {
         'sent_xml': str(xml_send),
