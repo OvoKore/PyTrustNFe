@@ -36,6 +36,7 @@
             <Discriminacao>{{ rps.descricao }}</Discriminacao>
             <CodigoMunicipio>{{ rps.codigo_municipio }}</CodigoMunicipio>
             <ExigibilidadeISS>1</ExigibilidadeISS>
+            <MunicipioIncidencia>{{ rps.codigo_municipio }}</MunicipioIncidencia>
         </Servico>
         <Prestador>
             <CpfCnpj>
