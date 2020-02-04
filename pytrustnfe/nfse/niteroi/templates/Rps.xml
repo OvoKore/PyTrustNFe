@@ -71,7 +71,6 @@
                 <Email>{{ rps.tomador.email }}</Email>
             </Contato>
         </Tomador>
-        <RegimeEspecialTributacao>{{ rps.regime_tributacao }}</RegimeEspecialTributacao>
         <OptanteSimplesNacional>{{ rps.optante_simples }}</OptanteSimplesNacional>
         <IncentivoFiscal>2</IncentivoFiscal>
         {% if rps.intermediario is defined -%}
