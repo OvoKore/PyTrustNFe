@@ -72,7 +72,7 @@
             </Contato>
         </Tomador>
         <OptanteSimplesNacional>{{ rps.optante_simples }}</OptanteSimplesNacional>
-        <IncentivoFiscal>0</IncentivoFiscal>
+        <IncentivoFiscal>Nao</IncentivoFiscal>
         {% if rps.intermediario is defined -%}
         <IntermediarioServico>
             <RazaoSocial>{{ rps.intermediario.razao_social }}</RazaoSocial>
