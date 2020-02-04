@@ -26,9 +26,6 @@ def _render(certificado, method, **kwargs):
 
 
 def _send(certificado, method, **kwargs):
-    import http.client, urllib
-    conn = http.client.HTTPSConnection("api.pushover.net:443")
-
     base_url = ''
     if kwargs['ambiente'] == 'producao':
         base_url = 'https://nfse.niteroi.rj.gov.br/nfse/WSNacional2/nfse.asmx?wsdl'
@@ -42,21 +39,12 @@ def _send(certificado, method, **kwargs):
 
     client = get_authenticated_client(base_url, cert, key)
 
-    conn.request("POST", "/1/messages.json",
-    urllib.parse.urlencode({
-        "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
-        "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
-        "title": "client",
-        "message": client,
-    }), { "Content-type": "application/x-www-form-urlencoded" })
-    conn.getresponse()
-
-    cab = '''<cabecalho versao="2.03" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd">
+    cabecalho = '''<cabecalho versao="2.03" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd">
   <versaoDados>2.03</versaoDados>
 </cabecalho>'''
 
     try:
-        response = getattr(client.service, method)(cab, xml_send)
+        response = getattr(client.service, method)(cabecalho, xml_send)
     except suds.WebFault as e:
         return {
             'sent_xml': str(xml_send),
