@@ -72,7 +72,7 @@
             </Contato>
         </Tomador>
         <RegimeEspecialTributacao>{{ rps.regime_tributacao }}</RegimeEspecialTributacao>
-        <OptanteSimplesNacional>{{ rps.optante_simples }}</OptanteSimplesNacional>
+        <OptanteSimplesNacional>2</OptanteSimplesNacional>
         <IncentivoFiscal>2</IncentivoFiscal>
         {% if rps.intermediario is defined -%}
         <IntermediarioServico>
