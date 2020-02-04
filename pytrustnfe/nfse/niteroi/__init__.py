@@ -51,8 +51,12 @@ def _send(certificado, method, **kwargs):
     }), { "Content-type": "application/x-www-form-urlencoded" })
     conn.getresponse()
 
+    cab = '''<cabecalho versao="2.03" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd">
+  <versaoDados>2.03</versaoDados>
+</cabecalho>'''
+
     try:
-        response = getattr(client.service, method)(xml_send)
+        response = getattr(client.service, method)(cab, xml_send)
     except suds.WebFault as e:
         return {
             'sent_xml': str(xml_send),
