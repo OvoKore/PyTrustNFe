@@ -72,7 +72,6 @@
             </Contato>
         </Tomador>
         <OptanteSimplesNacional>{{ rps.optante_simples }}</OptanteSimplesNacional>
-        <IncentivadorCultural>{{ rps.incentivador_cultural }}</IncentivadorCultural>
         {% if rps.intermediario is defined -%}
         <IntermediarioServico>
             <RazaoSocial>{{ rps.intermediario.razao_social }}</RazaoSocial>
