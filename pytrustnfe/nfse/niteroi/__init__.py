@@ -54,6 +54,8 @@ def _send(certificado, method, **kwargs):
 
     response, obj = sanitize_response(response)
 
+    import http.client, urllib
+    conn = http.client.HTTPSConnection("api.pushover.net:443")
     conn.request("POST", "/1/messages.json",
     urllib.parse.urlencode({
         "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
