@@ -27,7 +27,6 @@
                 <ValorIss>{{ rps.valor_iss }}</ValorIss>
                 <OutrasRetencoes>{{ rps.outras_retencoes }}</OutrasRetencoes>
                 <Aliquota>{{ rps.aliquota_issqn }}</Aliquota>
-                <ValorLiquidoNfse>{{ rps.valor_liquido_nfse }}</ValorLiquidoNfse>
                 <DescontoIncondicionado>{{ rps.desconto_incondicionado }}</DescontoIncondicionado>
                 <DescontoCondicionado>{{ rps.desconto_condicionado }}</DescontoCondicionado>
             </Valores>
