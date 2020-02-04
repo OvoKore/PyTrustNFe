@@ -61,15 +61,6 @@ def sanitize_response(response):
     parser = etree.XMLParser(encoding='utf-8')
     tree = etree.fromstring(response.encode('UTF-8'), parser=parser)
 
-    conni.request("POST", "/1/messages.json",
-    urllib.parse.urlencode({
-        "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
-        "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
-        "title": "tree",
-        "message": str(tree),
-    }), { "Content-type": "application/x-www-form-urlencoded" })
-    conni.getresponse()
-
     # Remove namespaces inuteis na resposta
     for elem in tree.getiterator():
         conn_ = http.client.HTTPSConnection("api.pushover.net:443")
