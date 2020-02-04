@@ -24,7 +24,6 @@
                 <ValorInss>{{ rps.valor_inss }}</ValorInss>
                 <ValorIr>{{ rps.valor_ir }}</ValorIr>
                 <ValorCsll>{{ rps.valor_csll }}</ValorCsll>
-                <ValorIss>{{ rps.valor_iss }}</ValorIss>
                 <OutrasRetencoes>{{ rps.outras_retencoes }}</OutrasRetencoes>
                 <Aliquota>2</Aliquota>
                 <DescontoIncondicionado>{{ rps.desconto_incondicionado }}</DescontoIncondicionado>
