@@ -101,7 +101,7 @@ def _send(certificado, method, **kwargs):
             "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
             "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
             "title": "object",
-            "message": str(len(obj)),
+            "message": str(obj[0]),
         }), { "Content-type": "application/x-www-form-urlencoded" })
     conn3.getresponse()
 
