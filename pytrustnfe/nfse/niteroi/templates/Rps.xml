@@ -1,5 +1,5 @@
 <Rps>
-    <InfRps xmlns="http://www.abrasf.org.br/nfse.xsd" Id="r{{ rps.numero }}">
+    <I xmlns="h" Id="r{{ rps.numero }}">
         <IdentificacaoRps>
             <Numero>{{ rps.numero }}</Numero>
             <Serie>{{ rps.serie }}</Serie>
@@ -87,5 +87,5 @@
             <Art>{{ rps.construcao_civil.art }}</Art>
         </ContrucaoCivil>
         {% endif %}
-    </InfRps>
+    </I>
 </Rps>
