@@ -10,7 +10,6 @@
             <Status>{{ rps.status }}</Status>
         </Rps>
         
-        <NaturezaOperacao>{{ rps.natureza_operacao }}</NaturezaOperacao>
         <RegimeEspecialTributacao>{{ rps.regime_tributacao }}</RegimeEspecialTributacao>
         <OptanteSimplesNacional>{{ rps.optante_simples }}</OptanteSimplesNacional>
         <IncentivadorCultural>{{ rps.incentivador_cultural }}</IncentivadorCultural>
