@@ -31,7 +31,7 @@
                 <DescontoCondicionado>{{ rps.desconto_condicionado }}</DescontoCondicionado>
             </Valores>
             <IssRetido>{{ rps.iss_retido }}</IssRetido>
-            <ItemListaServico>{{ rps.codigo_servico }}</ItemListaServico>
+            <ItemListaServico>{{ rps.codigo_tributacao_municipio }}</ItemListaServico>
             <CodigoCnae>{{ rps.cnae_servico }}</CodigoCnae>
             <CodigoTributacaoMunicipio>{{ rps.codigo_tributacao_municipio }}</CodigoTributacaoMunicipio>
             <Discriminacao>{{ rps.descricao }}</Discriminacao>
