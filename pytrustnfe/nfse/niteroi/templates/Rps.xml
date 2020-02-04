@@ -39,7 +39,9 @@
             <ExigibilidadeISS>1</ExigibilidadeISS>
         </Servico>
         <Prestador>
-            <Cnpj>{{ rps.prestador.cnpj }}</Cnpj>
+            <CpfCnpj>
+                <Cnpj>{{ rps.prestador.cnpj }}</Cnpj>
+            </CpfCnpj>
             <InscricaoMunicipal>{{ rps.prestador.inscricao_municipal }}</InscricaoMunicipal>
         </Prestador>
         <Tomador>
