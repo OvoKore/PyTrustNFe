@@ -1,4 +1,4 @@
-# © 2018 Danimar Ribeiro, Trustcode
+# © 2020 Gustavo Olivier <gustavo.olivier@lymtech.com.br>, LymTech
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import os
@@ -7,7 +7,6 @@ from pytrustnfe.client import get_authenticated_client
 from pytrustnfe.certificado import extract_cert_and_key_from_pfx, save_cert_key
 from pytrustnfe.xml import render_xml, sanitize_response
 from pytrustnfe.nfe.assinatura import Assinatura
-
 
 def _render(certificado, method, **kwargs):
     path = os.path.join(os.path.dirname(__file__), 'templates')
@@ -26,11 +25,7 @@ def _render(certificado, method, **kwargs):
 
 
 def _send(certificado, method, **kwargs):
-    import http.client, urllib
-    conn1 = http.client.HTTPSConnection("api.pushover.net:443")
-    conn2 = http.client.HTTPSConnection("api.pushover.net:443")
-    conn3 = http.client.HTTPSConnection("api.pushover.net:443")
-
+    cabecalho = '<cabecalho versao="2.03" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.03</versaoDados></cabecalho>'
     base_url = ''
     if kwargs['ambiente'] == 'producao':
         base_url = 'https://nfse.niteroi.rj.gov.br/nfse/WSNacional2/nfse.asmx?wsdl'
@@ -41,35 +36,11 @@ def _send(certificado, method, **kwargs):
     cert, key = extract_cert_and_key_from_pfx(
         certificado.pfx, certificado.password)
     cert, key = save_cert_key(cert, key)
-
     client = get_authenticated_client(base_url, cert, key)
-
-    cabecalho = '''<cabecalho versao="2.03" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd">
-  <versaoDados>2.03</versaoDados>
-</cabecalho>'''
 
     try:
         response = getattr(client.service, method)(cabecalho, xml_send)
     except suds.WebFault as e:
-
-        conn1.request("POST", "/1/messages.json",
-        urllib.parse.urlencode({
-            "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
-            "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
-            "title": "except-sent_xml",
-            "message": str(xml_send),
-        }), { "Content-type": "application/x-www-form-urlencoded" })
-        conn1.getresponse()
-
-        conn2.request("POST", "/1/messages.json",
-        urllib.parse.urlencode({
-            "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
-            "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
-            "title": "except-received_xml",
-            "message": str(e.fault.faultstring),
-        }), { "Content-type": "application/x-www-form-urlencoded" })
-        conn2.getresponse()
-
         return {
             'sent_xml': str(xml_send),
             'received_xml': str(e.fault.faultstring),
@@ -77,34 +48,6 @@ def _send(certificado, method, **kwargs):
         }
 
     response, obj = sanitize_response(response)
-
-    # conn1.request("POST", "/1/messages.json",
-    # urllib.parse.urlencode({
-    #     "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
-    #     "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
-    #     "title": "sent_xml",
-    #     "message": str(xml_send),
-    # }), { "Content-type": "application/x-www-form-urlencoded" })
-    # conn1.getresponse()
-
-    # conn2.request("POST", "/1/messages.json",
-    # urllib.parse.urlencode({
-    #     "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
-    #     "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
-    #     "title": "received_xml",
-    #     "message": str(response),
-    # }), { "Content-type": "application/x-www-form-urlencoded" })
-    # conn2.getresponse()
-
-    # conn3.request("POST", "/1/messages.json",
-    #     urllib.parse.urlencode({
-    #         "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
-    #         "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
-    #         "title": "object",
-    #         "message": str(obj[0]),
-    #     }), { "Content-type": "application/x-www-form-urlencoded" })
-    # conn3.getresponse()
-
     return {
         'sent_xml': str(xml_send),
         'received_xml': str(response),

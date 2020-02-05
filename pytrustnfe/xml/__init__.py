@@ -45,50 +45,16 @@ def render_xml(path, template_name, remove_empty, **nfe):
 
 
 def sanitize_response(response):
-    import http.client, urllib
-    connr = http.client.HTTPSConnection("api.pushover.net:443")
-
-    connr.request("POST", "/1/messages.json",
-    urllib.parse.urlencode({
-        "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
-        "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
-        "title": "response",
-        "message": str(response),
-    }), { "Content-type": "application/x-www-form-urlencoded" })
-    connr.getresponse()
-
     parser = etree.XMLParser(encoding='utf-8')
     tree = etree.fromstring(response.encode('UTF-8'), parser=parser)
-
     # Remove namespaces inuteis na resposta
     for elem in tree.getiterator():
-        # conn_ = http.client.HTTPSConnection("api.pushover.net:443")
-        # conn_.request("POST", "/1/messages.json",
-        # urllib.parse.urlencode({
-        #     "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
-        #     "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
-        #     "title": "iterator",
-        #     "message": str(elem.tag),
-        # }), { "Content-type": "application/x-www-form-urlencoded" })
-        # conn_.getresponse()
-
         if not hasattr(elem.tag, 'find'):
             continue
         i = elem.tag.find('}')
         if i >= 0:
             elem.tag = elem.tag[i + 1:]
     objectify.deannotate(tree, cleanup_namespaces=True)
-
-    conn_ = http.client.HTTPSConnection("api.pushover.net:443")
-    conn_.request("POST", "/1/messages.json",
-    urllib.parse.urlencode({
-        "token": "awh6fto25b9ybi6h2zsjojsscva3ta",
-        "user": "u81m6vngzsq751uw6qoywu6j7pqzhc",
-        "title": "iterator",
-        "message": str(objectify.fromstring(etree.tostring(tree))),
-    }), { "Content-type": "application/x-www-form-urlencoded" })
-    conn_.getresponse()
-
     return response, objectify.fromstring(etree.tostring(tree))
 
 

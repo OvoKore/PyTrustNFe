@@ -72,8 +72,8 @@
             </Contato>
         </Tomador>
         <RegimeEspecialTributacao>{{ rps.regime_tributacao }}</RegimeEspecialTributacao>
-        <OptanteSimplesNacional>2</OptanteSimplesNacional>
-        <IncentivoFiscal>2</IncentivoFiscal>
+        <OptanteSimplesNacional>{{ rps.optante_simples }}</OptanteSimplesNacional>
+        <IncentivoFiscal>{{ rps.incentivador_cultural }}</IncentivoFiscal>
         {% if rps.intermediario is defined -%}
         <IntermediarioServico>
             <RazaoSocial>{{ rps.intermediario.razao_social }}</RazaoSocial>
